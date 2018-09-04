@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config-description:config-descriptions
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:config-description="http://eclipse.org/smarthome/schemas/config-description/v1.0.0"
+		xsi:schemaLocation="http://eclipse.org/smarthome/schemas/config-description/v1.0.0
+		http://eclipse.org/smarthome/schemas/config-description-1.0.0.xsd">
+	<config-description uri="thing-type:domintell:bridge">
+		<parameter name="address" type="text" required="true">
+			<label>IP Address/Host Name</label>
+			<description>IP Address of Domintell DETH02 IP-interface</description>
+			<advanced>false</advanced>
+			<context>network-address</context>
+		</parameter>
+		<parameter name="port" type="integer" required="false">
+			<label>Port</label>
+			<description>Port to communicate with Domintell DETH02 IP-interface, default 17481</description>
+			<default>17481</default>
+			<advanced>false</advanced>
+		</parameter>
+	</config-description>
+	<config-description uri="thing-type:domintell:input">
+		<parameter name="inverterMask" type="text" required="false">
+			<label>Inverter mask</label>
+			<description>Mask to invert outputs</description>
+			<default>00000000</default>
+			<advanced>true</advanced>
+		</parameter>
+		<parameter name="autoResetMask" type="text" required="false">
+			<label>Reset mask</label>
+			<description>Inputs selected by this mask will be reset automatically after configured timeout</description>
+			<default>00000000</default>
+			<advanced>true</advanced>
+		</parameter>
+		<parameter name="resetTimeout" type="integer" min="5" max="60" required="true">
+			<label>Reset timeout</label>
+			<description>Input reset timeout</description>
+			<default>15</default>
+			<advanced>true</advanced>
+		</parameter>
+	</config-description>
+</config-description:config-descriptions>

@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="domintell" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 	xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
+	xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0 http://eclipse.org/smarthome/schemas/thing-description-1.0.0.xsd">
+	<bridge-type id="bridge">
+		<label>Domintell Bridge</label>
+		<description>Domintell DETH02 IP interface integration for openHAB</description>
+		
+		<channels>
+			<channel id="systemDate" typeId="systemDate"/>
+		</channels>
+		
+		<config-description-ref uri="thing-type:domintell:bridge"/>
+	</bridge-type>
+	
+	<!-- Thing Types -->
+	<thing-type id="bir">
+		<supported-bridge-type-refs>
+			<bridge-type-ref id="bridge"/>
+		</supported-bridge-type-refs>
+		<label>Domintell-DBIR01</label>
+		<description>Domintell DBIR01 relay module</description>
+		
+		<channels>
+			<channel id="output-1" typeId="output"/>
+			<channel id="output-2" typeId="output"/>
+			<channel id="output-3" typeId="output"/>
+			<channel id="output-4" typeId="output"/>
+			<channel id="output-5" typeId="output"/>
+			<channel id="output-6" typeId="output"/>
+			<channel id="output-7" typeId="output"/>
+			<channel id="output-8" typeId="output"/>
+		</channels>
+	</thing-type>
+	<thing-type id="dmr">
+		<supported-bridge-type-refs>
+			<bridge-type-ref id="bridge"/>
+		</supported-bridge-type-refs>
+		<label>Domintell-DMR01</label>
+		<description>Domintell DMR01 relay module</description>
+		
+		<channels>
+			<channel id="output-1" typeId="output"/>
+			<channel id="output-2" typeId="output"/>
+			<channel id="output-3" typeId="output"/>
+			<channel id="output-4" typeId="output"/>
+			<channel id="output-5" typeId="output"/>
+		</channels>
+	</thing-type>
+	<thing-type id="is8">
+		<supported-bridge-type-refs>
+			<bridge-type-ref id="bridge"/>
+		</supported-bridge-type-refs>
+		<label>Domintell-DIS08</label>
+		<description>Domintell DIS08 input module</description>
+		
+		<channels>
+			<channel id="contact-1" typeId="contact"/>
+			<channel id="contact-2" typeId="contact"/>
+			<channel id="contact-3" typeId="contact"/>
+			<channel id="contact-4" typeId="contact"/>
+			<channel id="contact-5" typeId="contact"/>
+			<channel id="contact-6" typeId="contact"/>
+			<channel id="contact-7" typeId="contact"/>
+			<channel id="contact-8" typeId="contact"/>
+			<channel id="command" typeId="inputCommand"/>
+		</channels>
+		<config-description-ref uri="thing-type:domintell:input"/>
+	</thing-type>
+	<thing-type id="is4">
+		<supported-bridge-type-refs>
+			<bridge-type-ref id="bridge"/>
+		</supported-bridge-type-refs>
+		<label>Domintell-DIS04</label>
+		<description>Domintell DIS04 input module</description>
+		
+		<channels>
+			<channel id="contact-1" typeId="contact"/>
+			<channel id="contact-2" typeId="contact"/>
+			<channel id="contact-3" typeId="contact"/>
+			<channel id="contact-4" typeId="contact"/>
+			<channel id="command" typeId="inputCommand"/>
+		</channels>
+		<config-description-ref uri="thing-type:domintell:input"/>
+	</thing-type>
+	<thing-type id="te1">
+		<supported-bridge-type-refs>
+			<bridge-type-ref id="bridge"/>
+		</supported-bridge-type-refs>
+		<label>Domintell-DTEM01</label>
+		<description>Domintell DTEM01 thermostat module</description>
+		
+		<channel-groups>
+			<channel-group id="thermostat" typeId="thermostat"/>
+		</channel-groups>
+	</thing-type>
+	<thing-type id="var">
+		<supported-bridge-type-refs>
+			<bridge-type-ref id="bridge"/>
+		</supported-bridge-type-refs>
+		<label>Domintell-VAR</label>
+		<description>Domintell variable</description>
+		
+		<channels>
+			<channel id="numValue" typeId="numVar"/>
+			<channel id="booleanValue" typeId="booleanVar"/>
+		</channels>
+	</thing-type>
+	
+	<!-- Channel Types -->
+	<channel-type id="systemDate">
+		<item-type>DateTime</item-type>
+		<label>System Date</label>
+		<description>Domintell system date</description>
+	</channel-type>
+	<channel-type id="output">
+		<item-type>Switch</item-type>
+		<label>Output</label>
+		<description>Module output</description>
+		<category>Switch</category>
+		<state pattern="%s"/>
+	</channel-type>
+	<channel-type id="contact">
+		<item-type>Contact</item-type>
+		<label>Input</label>
+		<description>Module input</description>
+		<state pattern="%s" readOnly="true"/>
+	</channel-type>
+	<channel-type id="inputCommand">
+		<item-type>String</item-type>
+		<label>Input command</label>
+		<description>Module input command</description>
+		<state pattern="%s">
+			<options>
+				<option value="SP1">ShortPush-1</option>
+				<option value="SP2">ShortPush-2</option>
+				<option value="SP3">ShortPush-3</option>
+				<option value="SP4">ShortPush-4</option>
+				<option value="SP5">ShortPush-5</option>
+				<option value="SP6">ShortPush-6</option>
+				<option value="SP7">ShortPush-7</option>
+				<option value="SP8">ShortPush-8</option>
+				<option value="LP1">LongPush-1</option>
+				<option value="LP2">LongPush-2</option>
+				<option value="LP3">LongPush-3</option>
+				<option value="LP4">LongPush-4</option>
+				<option value="LP5">LongPush-5</option>
+				<option value="LP6">LongPush-6</option>
+				<option value="LP7">LongPush-7</option>
+				<option value="LP8">LongPush-8</option>
+			</options>
+		</state>
+	</channel-type>
+	<channel-type id="numVar">
+		<item-type>Number</item-type>
+		<label>Numeric variable</label>
+		<description>Numeric variable</description>
+		<state pattern="%d"/>
+	</channel-type>
+	<channel-type id="booleanVar">
+		<item-type>Switch</item-type>
+		<label>Boolean variable</label>
+		<description>Boolean variable</description>
+		<category>Switch</category>
+		<state pattern="%s"/>
+	</channel-type>
+	
+	
+	<channel-group-type id="thermostat">
+		<label>Thermostat</label>
+		<description>The thermostat</description>
+		<channels>
+			<channel id="presetValue" typeId="temperature"/>
+			<channel id="currentValue" typeId="temperature"/>
+			<channel id="profileValue" typeId="temperature"/>
+			<channel id="mode" typeId="regulationMode"/>
+		</channels>
+	</channel-group-type>
+	
+	<channel-type id="temperature">
+		<item-type>Number</item-type>
+		<label>Temperature value</label>
+		<description>Temperature value</description>
+		<state pattern="%d"/>
+	</channel-type>
+	<channel-type id="regulationMode">
+		<item-type>Number</item-type>
+		<label>Regulation mode</label>
+		<description>Regulation mode</description>
+		<category>Number</category>
+		<state pattern="%d">
+			<options>
+				<option value="2">AUTO</option>
+				<option value="1">ABSENCE</option>
+				<option value="5">COMFORT</option>
+				<option value="6">FROST</option>
+			</options>
+		</state>
+	</channel-type>
+</thing:thing-descriptions>
